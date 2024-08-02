@@ -344,5 +344,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segmentPrefab: {fileID: 5654092519718469232, guid: eed3dec843b32f94881f2b919f5c7a28, type: 3}
-  segmentCount: 6
+  maxSegments: 6
   moveTimerMax: 0.5

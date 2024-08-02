@@ -234,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1874003955
 AudioListener:
   m_ObjectHideFlags: 0
@@ -293,14 +293,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874003954}
-  m_LocalRotation: {x: 0.11878374, y: -0.69705844, z: 0.11878377, w: 0.69705844}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 14.39, y: 3.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 19.341, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &1897645208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -308,13 +308,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 963194225, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 1220470464, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
+      propertyPath: offset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220470464, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
+      propertyPath: moveTimerMax
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220470464, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
+      propertyPath: offsetMultiplier
+      value: 1.005
       objectReference: {fileID: 0}
     - target: {fileID: 5654092519718469232, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
       propertyPath: m_Name
       value: Player Head
+      objectReference: {fileID: 0}
+    - target: {fileID: 8640144482981563313, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
+      propertyPath: moveTimerMax
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8958960747322905247, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
       propertyPath: m_RootOrder
@@ -330,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8958960747322905247, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8958960747322905247, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
       propertyPath: m_LocalRotation.w
