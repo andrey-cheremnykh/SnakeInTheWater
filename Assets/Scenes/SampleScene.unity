@@ -135,17 +135,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 963194225, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1220470464, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
-      propertyPath: offset
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 1220470468, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
+      propertyPath: levelSpawnManager
+      value: 
+      objectReference: {fileID: 2047688000}
     - target: {fileID: 5654092519718469232, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
       propertyPath: m_Name
       value: Player Head
+      objectReference: {fileID: 0}
+    - target: {fileID: 8640144482981563313, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
+      propertyPath: rotateAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8958960747322905247, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
       propertyPath: m_RootOrder

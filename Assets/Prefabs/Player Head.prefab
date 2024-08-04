@@ -111,7 +111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &963194228
 Transform:
   m_ObjectHideFlags: 0
@@ -368,8 +368,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8958960747322905247}
   - component: {fileID: 8640144482981563313}
-  - component: {fileID: 6665920138338441636}
   - component: {fileID: 1220470464}
+  - component: {fileID: 1220470468}
+  - component: {fileID: 6665920138338441636}
   m_Layer: 0
   m_Name: Player Head
   m_TagString: Untagged
@@ -410,6 +411,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAlive: 1
   moveSpeed: 0.5
+  rotateAmount: 0
+--- !u!114 &1220470464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654092519718469232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d63de8e6be92c43b767c9f003327b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  segmentPrefab: {fileID: 5654092519718469232, guid: eed3dec843b32f94881f2b919f5c7a28, type: 3}
+  maxSegments: 6
+  offset: 1
+  moveTimerMax: 1.25
+--- !u!114 &1220470468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5654092519718469232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6c0cdb9b385b1418cf5911829fab53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointerPrefab: {fileID: 30969599090210935, guid: 83866a883168fde40a9f3180936fa25e, type: 3}
+  levelSpawnManager: {fileID: 0}
+  offset: 1.25
 --- !u!54 &6665920138338441636
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -426,19 +459,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1220470464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5654092519718469232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16d63de8e6be92c43b767c9f003327b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  segmentPrefab: {fileID: 5654092519718469232, guid: eed3dec843b32f94881f2b919f5c7a28, type: 3}
-  maxSegments: 6
-  offset: 0.75
-  moveTimerMax: 1.25

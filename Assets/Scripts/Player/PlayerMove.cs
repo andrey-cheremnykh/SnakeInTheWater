@@ -6,8 +6,9 @@ public class PlayerMove : MonoBehaviour
 {
     public bool isAlive = true;
     PlayerSnake snakeLogic;
-    [SerializeField]float moveSpeed = 0.5f;
     Rigidbody rb;
+    [SerializeField]float moveSpeed = 0.5f;
+    [SerializeField]int rotateAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -32,16 +33,12 @@ public class PlayerMove : MonoBehaviour
     }
     void ForwardRigidbody()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
             rb.velocity = transform.forward * moveSpeed;
-        }
     }
     void Rotate(KeyCode key,short rotateAxis, bool isNegative)
     {
-        int rotateAmount = 90;
         if (isNegative == true) rotateAmount = -rotateAmount;
-        if (Input.GetKeyDown(key))
+        if (Input.GetKey(key))
         {
             if(rotateAxis == 0)
             {
