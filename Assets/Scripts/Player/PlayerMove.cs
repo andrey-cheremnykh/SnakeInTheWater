@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    public bool isAlive = true;
+    PlayerSnake snakeLogic;
     [SerializeField]float moveSpeed = 0.5f;
     Rigidbody rb;
 
@@ -11,17 +13,22 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        snakeLogic = GetComponent<PlayerSnake>();
     }
     
     private void Update()
     {
-        ForwardRigidbody();
+        if (isAlive)
+        {
+            ForwardRigidbody();
 
-        Rotate(KeyCode.UpArrow, 0, false);
-        Rotate(KeyCode.DownArrow, 0, true);
+            Rotate(KeyCode.UpArrow, 0, false);
+            Rotate(KeyCode.DownArrow, 0, true);
 
-        Rotate(KeyCode.RightArrow, 1, false);
-        Rotate(KeyCode.LeftArrow, 1, true);
+            Rotate(KeyCode.RightArrow, 1, false);
+            Rotate(KeyCode.LeftArrow, 1, true);
+        }
+        else print("dead(((");
     }
     void ForwardRigidbody()
     {
@@ -49,5 +56,19 @@ public class PlayerMove : MonoBehaviour
                 transform.Rotate(0, 0, rotateAmount);
             }
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject collisionObject;
+        if (collision.transform.parent == null) collisionObject = collision.gameObject;
+        else collisionObject = collision.gameObject;
+
+        if (collisionObject.CompareTag("Apple"))
+        {
+            snakeLogic.maxSegments++;
+            Destroy(collision.transform.parent.gameObject);
+        }
+        else if (collisionObject.CompareTag("Obstacle")) isAlive = false;
+        else return;
     }
 }

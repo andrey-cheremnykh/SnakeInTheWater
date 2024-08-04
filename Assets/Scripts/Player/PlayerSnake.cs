@@ -15,7 +15,10 @@ public class PlayerSnake : MonoBehaviour
     float moveTimer;
     void Update()
     {
-        UpdateSnake();
+        if (GetComponent<PlayerMove>().isAlive)
+        {
+            UpdateSnake();
+        }
     }
     void UpdateSnake()
     {
@@ -27,10 +30,10 @@ public class PlayerSnake : MonoBehaviour
             Vector3 spawnPos = Offset(transform);
 
             segmentsPosition.Add(spawnPos);
-            GameObject newSegment = Instantiate(segmentPrefab, segmentsPosition[segmentsPosition.Count - 1] , Quaternion.identity);
+            GameObject newSegment = Instantiate(segmentPrefab, segmentsPosition[^1] , Quaternion.identity);
             segmentsObject.Add(newSegment);
             newSegment.name = "segment " + segmentsObject.IndexOf(newSegment);
-            segmentsPosition[segmentsPosition.Count - 1] = segmentsObject[segmentsObject.Count - 1].transform.forward * offset;
+            segmentsPosition[^1/*segmentsPosition.Count - 1*/] = segmentsObject[^1].transform.forward * offset;
         }
         if (segmentsPosition.Count > maxSegments)
         {
@@ -49,12 +52,12 @@ public class PlayerSnake : MonoBehaviour
             if (forward == -Vector3.up) offsetAmount = -offsetAmount;
             finalOffset = relativeToTransform.position - new Vector3(0, offsetAmount, 0);
         }
-        if(forward == Vector3.right || forward == -Vector3.right)
+        else if(forward == Vector3.right || forward == -Vector3.right)
         {
             if (forward == -Vector3.right) offsetAmount = -offsetAmount;
             finalOffset = relativeToTransform.position - new Vector3(offsetAmount, 0, 0);
         }
-        if(forward == Vector3.forward || forward == -Vector3.forward)
+        else if(forward == Vector3.forward || forward == -Vector3.forward)
         {
             if (forward == -Vector3.forward) offsetAmount = -offsetAmount;
             finalOffset = relativeToTransform.position - new Vector3(0, 0, offsetAmount);
