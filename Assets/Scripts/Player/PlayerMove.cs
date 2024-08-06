@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class PlayerMove : MonoBehaviour
 {
     public bool isAlive = true;
     PlayerSnake snakeLogic;
     Rigidbody rb;
-    [SerializeField]float moveSpeed = 0.5f;
-    [SerializeField]int rotateAmount;
+    [SerializeField] float moveSpeed = 0.5f;
+    [SerializeField] int rotateAmount;
+    [SerializeField] float rotateSpeed = 0.5f;//the duration of dotween animations
 
     // Start is called before the first frame update
     void Start()
     {
+        DOTween.Init();
         rb = GetComponent<Rigidbody>();
         snakeLogic = GetComponent<PlayerSnake>();
     }
@@ -23,34 +25,40 @@ public class PlayerMove : MonoBehaviour
         {
             ForwardRigidbody();
 
-            Rotate(KeyCode.UpArrow, 0, false);
-            Rotate(KeyCode.DownArrow, 0, true);
+            Rotate(KeyCode.UpArrow, false, true);
+            Rotate(KeyCode.DownArrow, false, false);
 
-            Rotate(KeyCode.RightArrow, 1, false);
-            Rotate(KeyCode.LeftArrow, 1, true);
+            Rotate(KeyCode.RightArrow, true, true);
+            Rotate(KeyCode.LeftArrow, true, false);
         }
         else print("dead(((");
     }
     void ForwardRigidbody()
     {
-            rb.velocity = transform.forward * moveSpeed;
+        rb.velocity = transform.forward * moveSpeed;
     }
-    void Rotate(KeyCode key,short rotateAxis, bool isNegative)
+    const string comma = ", ";
+    void Rotate(KeyCode key, bool rotateAxis/*false for x, true for y*/, bool isNegative)
     {
-        if (isNegative == true) rotateAmount = -rotateAmount;
-        if (Input.GetKey(key))
+        int rotateValue = rotateAmount;
+        Vector3 rotateVector = Vector3.zero;
+        if (isNegative)
         {
-            if(rotateAxis == 0)
+            rotateValue = -rotateAmount;
+        }
+
+        //print(rotateAmount + comma + key + comma + rotateAxis + comma + isNegative);
+        if (Input.GetKeyDown(key))
+        {
+            if(rotateAxis == false)
             {
-                transform.Rotate(rotateAmount, 0, 0);
+                rotateVector = Vector3.right * rotateValue;
+                transform.Rotate(rotateVector);
             }
-            else if(rotateAxis == 1)
+            else if(rotateAxis == true)
             {
-                transform.Rotate(0, rotateAmount, 0);
-            }
-            else if (rotateAxis == 2)
-            {
-                transform.Rotate(0, 0, rotateAmount);
+                rotateVector = Vector3.up * rotateValue;
+                transform.Rotate(rotateVector);
             }
         }
     }
@@ -58,14 +66,18 @@ public class PlayerMove : MonoBehaviour
     {
         GameObject collisionObject;
         if (collision.transform.parent == null) collisionObject = collision.gameObject;
-        else collisionObject = collision.gameObject;
+        else collisionObject = collision.transform.parent.gameObject;
 
         if (collisionObject.CompareTag("Apple"))
         {
             snakeLogic.maxSegments++;
             Destroy(collision.transform.parent.gameObject);
         }
-        else if (collisionObject.CompareTag("Obstacle")) isAlive = false;
+        else if (collisionObject.CompareTag("Obstacle"))
+        {
+            isAlive = false;
+            Time.timeScale = 0;
+        }
         else return;
     }
 }

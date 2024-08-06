@@ -411,7 +411,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAlive: 1
   moveSpeed: 0.5
-  rotateAmount: 0
+  rotateAmount: 90
+  rotateSpeed: 0.5
 --- !u!114 &1220470464
 MonoBehaviour:
   m_ObjectHideFlags: 0

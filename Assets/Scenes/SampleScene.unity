@@ -143,10 +143,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Head
       objectReference: {fileID: 0}
-    - target: {fileID: 8640144482981563313, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
-      propertyPath: rotateAmount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8958960747322905247, guid: e122eb0c8dfa1044db956ef8594230b3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -222,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ac86afa4ff5834fab9df1802ad31d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appleCount: 3
+  appleCount: 4
   minX: -15
   minY: -15
   minZ: -15
