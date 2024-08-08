@@ -5,8 +5,9 @@ using UnityEngine;
 public class LevelObjectSpawning : MonoBehaviour
 {
     public int appleCount = 3;
-    [SerializeField] int minX, minY, minZ;
-    [SerializeField] int maxX, maxY, maxZ;
+    public int minX, minY, minZ;
+    public int maxX, maxY, maxZ;
+    public GameObject playerPrefab;
     [SerializeField] GameObject applePrefab;
     [SerializeField] Mesh borderMesh;
     [SerializeField] Material borderMaterial;
@@ -14,7 +15,7 @@ public class LevelObjectSpawning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateLevelBorders();
+        
     }
 
     // Update is called once per frame
@@ -24,7 +25,8 @@ public class LevelObjectSpawning : MonoBehaviour
     }
     void GenerateApples()
     {
-        int currentAppleCount = GameObject.FindGameObjectsWithTag("Apple").Length;
+        int currentAppleCount = GameObject.FindGameObjectsWithTag("Apple").Length / 2;
+        //the int above represents double the current amount of apples, so we divide it by 2
         if(currentAppleCount < appleCount)
         {
             int spawnX = Random.Range(minX, maxX);
@@ -35,7 +37,7 @@ public class LevelObjectSpawning : MonoBehaviour
             newApple.transform.parent = null;
         }
     }
-    void GenerateLevelBorders()
+    public void GenerateLevelBorders()
     {
         int xScale = maxX * 2;
         int yScale = maxY * 2;

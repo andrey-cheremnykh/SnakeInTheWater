@@ -7,11 +7,11 @@ using TMPro;
 public class PointToApple : MonoBehaviour
 {
     [SerializeField] GameObject pointerPrefab;
-    [SerializeField] GameObject levelSpawnManager;
     [SerializeField] float offset;
     GameObject[] pointers;
     TMP_Text distanceText;
     LevelObjectSpawning objectSpawning; 
+    public GameObject levelSpawnManager;
 
     // Start is called before the first frame update
     void Start()

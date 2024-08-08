@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 public class PlayerMove : MonoBehaviour
 {
     public bool isAlive = true;
@@ -9,16 +8,14 @@ public class PlayerMove : MonoBehaviour
     Rigidbody rb;
     [SerializeField] float moveSpeed = 0.5f;
     [SerializeField] int rotateAmount;
-    [SerializeField] float rotateSpeed = 0.5f;//the duration of dotween animations
 
     // Start is called before the first frame update
     void Start()
     {
-        DOTween.Init();
         rb = GetComponent<Rigidbody>();
         snakeLogic = GetComponent<PlayerSnake>();
     }
-    
+
     private void Update()
     {
         if (isAlive)
@@ -37,7 +34,7 @@ public class PlayerMove : MonoBehaviour
     {
         rb.velocity = transform.forward * moveSpeed;
     }
-    const string comma = ", ";
+
     void Rotate(KeyCode key, bool rotateAxis/*false for x, true for y*/, bool isNegative)
     {
         int rotateValue = rotateAmount;
