@@ -66,5 +66,6 @@ public class LevelGenerationSettings : MonoBehaviour
 
         GameObject player = Instantiate(objectSpawning.playerPrefab, Vector3.zero, Quaternion.identity);
         player.GetComponent<PointToApple>().levelSpawnManager = objectSpawning.gameObject;
+        DontDestroyOnLoad(player);
     }
 }

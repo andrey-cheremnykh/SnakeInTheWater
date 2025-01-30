@@ -72,6 +72,8 @@ public class LevelObjectSpawning : MonoBehaviour
             borders[i].AddComponent<MeshRenderer>().material = borderMaterial;
             borders[i].tag = "Obstacle";
             borders[i].AddComponent<BoxCollider>();
+            borders[i].AddComponent<ObjectCreationTest>();
+            DontDestroyOnLoad(borders[i]);
         }
     }
 }

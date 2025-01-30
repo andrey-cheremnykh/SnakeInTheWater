@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 public class PlayerMove : MonoBehaviour
 {
     public bool isAlive = true;
@@ -37,6 +38,8 @@ public class PlayerMove : MonoBehaviour
 
     void Rotate(KeyCode key, bool rotateAxis/*false for x, true for y*/, bool isNegative)
     {
+        float rotateSpeed = 1;
+        RotateMode rotateMode = (RotateMode)3;
         int rotateValue = rotateAmount;
         Vector3 rotateVector = Vector3.zero;
         if (isNegative)
@@ -50,12 +53,12 @@ public class PlayerMove : MonoBehaviour
             if(rotateAxis == false)
             {
                 rotateVector = Vector3.right * rotateValue;
-                transform.Rotate(rotateVector);
+                transform.DORotate(rotateVector, rotateSpeed, rotateMode);
             }
             else if(rotateAxis == true)
             {
                 rotateVector = Vector3.up * rotateValue;
-                transform.Rotate(rotateVector);
+                transform.DORotate(rotateVector, rotateSpeed, rotateMode);
             }
         }
     }
